@@ -19,19 +19,20 @@ eps = - np.abs(X1) + np.abs(X2)
 Y = (0.5 * X + eps).ravel()
 
 # Calcul des régressions
-clr = LinearRegression()
+clr = LinearRegression(fit_intercept=True)
 clr.fit(X, Y)
-print(clr.summary())
-LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
+
 clq = sm.regression.quantile_regression.QuantReg(Y, X).fit(q=0.5)
-print(clq.summary())
+# print(clq.summary())
 
 # Plot
 fig, ax = plt.subplots(1, 1, figsize=(5, 5))
 ax.plot(X, Y, 'c.')
 lin = clr.predict(X)
 ax.plot(X, lin, 'ro', label="Régression linéaire")
+
 qu = clq.predict(X)
 ax.plot(X, qu, 'bo', label="Régression médiane")
+
 ax.legend()
 ax.set_title("Régression linéaire vs médiane")
