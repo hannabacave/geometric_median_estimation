@@ -160,7 +160,7 @@ class Simulation:
 
 def main():
     """Cette fonction permet le lancement de la simulation et execute toutes les fonctions."""
-    s = Simulation(100, 1000, 3, 50, 1)  # on peut le modifier
+    s = Simulation(100, 1000, 3, 50, 4)  # on peut le modifier
     s.build()
     s.quantile_regression()
     s.comparaison()
